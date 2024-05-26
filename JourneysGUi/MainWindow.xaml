@@ -1,0 +1,32 @@
+﻿<Window x:Class="JourneysGUi.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JourneysGUi"
+        mc:Ignorable="d"
+        Title="Vehicles" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ListBox x:Name="vehicle_LBX" ItemsSource="{Binding vehicleString}" Grid.RowSpan="3" Grid.Column="0" SelectionChanged="vehicle_LBX_SelectionChanged">
+            <ListBox.ItemContainerStyle >
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Margin" Value="10"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+
+        <Label Content="Meghírdetett utak:" Grid.Column="1" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="journeys_CBX" ItemsSource="{Binding FilteredJourneys}" Grid.Column="1" Grid.Row="1" SelectionChanged="journeys_CBX_SelectionChanged"/>
+        <TextBox x:Name="description_TBX" Grid.Column="1" Text="{Binding SelectedJourney.description}" Grid.Row="2" />
+    </Grid>
+</Window>
